@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+
 const mode = process.env.NODE_ENV || 'development';
 
 const devMode = mode === "development";
@@ -58,6 +59,19 @@ module.exports = {
                 test: /\.json$/,
                 loader: 'json-loader',
                 type: 'javascript/auto',
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            bypassOnDebug: true, // webpack@1.x
+                            disable: true, // webpack@2.x and newer
+                        },
+                    },
+                ],
             },
         ],
     }

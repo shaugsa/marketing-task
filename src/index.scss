@@ -1,7 +1,14 @@
-header {
-    color: red;
-}
+.stock {
+    &__container {
+        width: 1000px;
+        height: 200px;
+        background: grey;
+        margin-bottom: 20px;
+        display: flex
+    }
 
-h1 {
-    color: green;
+    &__img {
+        width: 100px;
+        height: 100px;
+    }
 }
