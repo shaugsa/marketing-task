@@ -20,7 +20,8 @@ main {
         font-size: 1.375rem;
         color: #333;
         margin-bottom: 20px;
-        font-weight: bold   ;
+        font-weight: bold;
+        line-height: 21px;
     }
     &__nav {
         background-color: #fff;
@@ -29,22 +30,122 @@ main {
             display: flex;
             list-style: none;
         }
+        .nav__item {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 18.75px;
+            margin-right: 32px;
+        }
+        a {
+            text-decoration: none;
+            color: #8D8D8D;
+        }
+    }
+    &__breadcrumbs {
+
+        .breadcrumbs__list {
+            display: flex;
+            list-style: none;
+        }
+
+        .breadcrumbs__item {
+            margin-right: 0.5rem;
+
+            &:after {
+                content: '>';
+                margin-left: 0.75rem;
+            }
+
+            &:last-child:after {
+                content: ' ';
+            }
+        }
     }
 }
 
 
 
 .stock {
+    width: 100%;
+
+    .text {
+        padding: 0;
+        margin: 0;
+    }
+
     &__container {
-        width: 1000px;
-        background: grey;
-        margin-bottom: 20px;
+        width: 100%;
+        position: relative;
         display: flex;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+    }
+
+    &__item {
+        display: flex;
+        background-color: #fff;
+        margin-bottom: 20px;
         padding: 16px;
     }
 
-    &__img {
-        width: 224px;
-        height: 168px;
+    .item {
+        &__img {
+            width: 224px;
+            height: 168px;
+            margin-right: 17px;
+        }
+
+        &__truck-info {
+            width: 700px;
+        }
+
+        &__price-info {
+            position: absolute;
+            display: flex;
+            right: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 18.75px;
+        }
+
+        &__title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            line-height: 21px;
+            color: #333;
+            margin-bottom: 7px;
+        }
+
+        &__text {
+            font-size: .875rem;
+            color: #828282;
+            font-weight: 300;
+            line-height: 16px;
+        }
+
+        &__tech-info {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            p {
+                margin-right: 16px;
+                padding: 5px;
+                background-color: #C4C4C4;
+                color: #fff;
+                font-size: 0.75rem;
+                font-weight: 300;
+                line-height: 14px;
+                text-align: center;
+            }
+        }
+
+        &__item {
+
+        }
     }
+
+
 }

@@ -48,6 +48,7 @@ function navGetItem() {
         const item = document.createElement('li');
         const link = document.createElement('a');
         link.className = 'nav__link'
+        link.setAttribute('href', '#');
         link.innerHTML = JSON.stringify(dataset.nav[i].text).replace(/"/g, "");
         item.className = 'nav__item'
         item.setAttribute('href', JSON.stringify(dataset.nav[i].href))
@@ -79,50 +80,58 @@ function stockGetItem() {
         item.className = 'stock__item';
         const container = document.createElement('div');
         container.className = 'stock__container'
-        let img, title, price, priceCur, year, mileage, mileageMeasure, axleConfiguration;
+        let img, text, title, price, priceCur, year, mileage, mileageMeasure, axleConfiguration;
 
         img = document.createElement('img');
-        img.className = 'stock__img';
+        img.className = 'item__img';
         img.setAttribute('src', `${arr[i]}`);
         img.setAttribute('alt', 'truck page');
 
-        price = document.createElement('p');
-        price.className = 'stock__price text';
-        price.innerHTML = JSON.stringify(data[i].price).replace(/"/g, "");
-
         title = document.createElement('h3');
-        title.className = 'stock__title text';
+        title.className = 'item__title text';
         title.innerHTML = JSON.stringify(data[i].title).replace(/"/g, "");
 
-        priceCur = document.createElement('p')
-        priceCur.className = 'stock__price-cur';
-        priceCur.innerHTML = JSON.stringify(data[i].price_currency).replace(/"/g, "");
+        text = document.createElement('p')
+        text.className = 'item__text text';
+        text.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad excepturi, facere harum iure magni maxime minus nihil pariatur placeat provident sunt, tempora voluptate! Cum cumque eaque fugiat itaque laboriosam necessitatibus numquam. Maiores nam optio perferendis provident reiciendis sunt voluptatum!'
+
+        price = document.createElement('p');
+        price.className = 'item__price text';
+        price.innerHTML = JSON.stringify(data[i].price_currency).replace(/"/g, "") + ' ' + JSON.stringify(data[i].price).replace(/"/g, "");
 
         year = document.createElement('p')
-        year.className = 'stock__year text'
+        year.className = 'item__year text'
         year.innerHTML = JSON.stringify(data[i].year).replace(/"/g, "");
 
         mileage = document.createElement('p')
-        mileage.className = 'stock__mileage text'
-        mileage.innerHTML = JSON.stringify(data[i].mileage)
-
-        mileageMeasure = document.createElement('p')
-        mileageMeasure.className = 'stock__mileage-measure';
-        mileageMeasure.innerHTML = JSON.stringify(data[i].mileage_measure).replace(/"/g, "");
+        mileage.className = 'item__mileage text'
+        mileage.innerHTML = JSON.stringify(data[i].mileage).replace(/"/g, "") + ' ' + JSON.stringify(data[i].mileage_measure).replace(/"/g, "");
 
         axleConfiguration = document.createElement('p')
-        axleConfiguration.className = 'stock__axle-configuration'
+        axleConfiguration.className = 'item__axle-configuration text'
         axleConfiguration.innerHTML = JSON.stringify(data[i].axle_configuration).replace(/"/g, "");
 
-        container.append(img, price, title, priceCur, year, mileage, mileageMeasure, axleConfiguration)
-        item.append(container)
+        const truckInfo = document.createElement('div')
+        truckInfo.className = 'item__truck-info'
+        truckInfo.append(title, text)
+
+        const techInfo = document.createElement('div')
+        techInfo.className = 'item__tech-info'
+        techInfo.append( year, mileage, axleConfiguration)
+
+        const priceInfo = document.createElement('div')
+        priceInfo.className = 'item__price-info'
+        priceInfo.append(price)
+
+        container.append( truckInfo, priceInfo, techInfo)
+        item.append(img, container)
         stockList.append(item)
     }
 }
 
-
-
 stockGetItem()
+
+
 
 
 
